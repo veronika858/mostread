@@ -19,7 +19,6 @@
 <script>
 
 import axios from "axios";
-// import {vModelSelect} from "vue";
 
 export default {
   name: "7d",
@@ -40,8 +39,6 @@ export default {
         .get('https://public-api.aktuality.sk/articles/mostread/aktuality/?days=7&limit=8')
         .then(response => {
           const data = response.data;
-          /* localStorage["dataItems"]=data.items;*/
-          console.log(data.items[0].title);
           this.newsItems = data.items;
         })
         .catch(error => {

@@ -33,30 +33,17 @@ export default {
     };
   },
   created() {
-
-    /*if (localStorage["dataItems"]) {
-      console.log('true', localStorage["dataItems"]);
-      this.newsItems = localStorage["dataItems"];
-      this.error = false;
-      this.loading = false;
-      this.post = true;
-    } else */
-      this.fetchData();
-
+     this.fetchData();
   },
 
   methods: {
-
     fetchData() {
       this.error = this.post = null;
       this.loading = true;
       fetch('https://public-api.aktuality.sk/articles/mostread/aktuality/?days=3&limit=8')
           .then(async response => {
             const data = await response.json();
-            // data.map(val => {val = data; console.log(val)});
-            console.log(data.items[0].title);
-            const n = localStorage["dataItems"] = data.items;
-            console.log('localstorage', n);
+            const n = data.items;
             this.loading = false;
 
             // check for error response

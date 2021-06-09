@@ -15,9 +15,7 @@
 <script>
 export default {
   name: "24h",
-  props: {
-    // msg: String,
-  },
+  props: {},
   data() {
     return {
       newsItems: null,
@@ -29,9 +27,7 @@ export default {
     fetch('https://public-api.aktuality.sk/articles/mostread/aktuality/?days=1&limit=8')
         .then(async response => {
           const data = await response.json();
-          // data.map(val => {val = data; console.log(val)});
           console.log(data.items[0].title);
-          console.log(data.total_count, data.items);
 
           // check for error response
           if (!response.ok) {
@@ -50,34 +46,7 @@ export default {
   },
 
 
-  methods: {
-    /*  async getNews(){
-
-      fetch('https://public-api.aktuality.sk/articles/mostread/aktuality/')
-          .then(async response => {
-            const data = await response.json();
-            // data.map(val => {val = data; console.log(val)});
-            console.log(data.items[0].title);
-            console.log(data.total_count, data.items);
-
-            // check for error response
-            if (!response.ok) {
-              // get error message from body or default to response statusText
-              const error = (data && data.message) || response.statusText;
-              return Promise.reject(error);
-            }
-
-            return this.totalVuePackages = data.items;
-          })
-          .catch(error => {
-            this.errorMessage = error;
-            console.error("There was an error!", error);
-          });
-    }
-
-}
-*/
-  }
+  methods: {}
 };
 </script>
 
