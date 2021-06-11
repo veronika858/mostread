@@ -1,7 +1,6 @@
 <template>
   <div class="container">
-
-    <News title="Najčítanejšie"/>
+	  <News title="Najčítanejšie"/>
     <div id="nav">
       <router-link to="/">24h</router-link>
       /
@@ -9,11 +8,9 @@
       /
       <router-link to="/7d">7d</router-link>
     </div>
-    <router-view/>
+	  <router-view/>
   </div>
 </template>
-
-
 
 <style scoped lang="scss">
 @import "~@/scss/main.scss";
@@ -45,16 +42,13 @@
       text-decoration: none;
     }
   }
-
 }
 </style>
 
 <script>
-import News from "@/components/News";
+	import News from "@/components/News";
 
-
-export default {
-  components: {News}
-
-}
+	export default {
+		components: {News},
+	};
 </script>

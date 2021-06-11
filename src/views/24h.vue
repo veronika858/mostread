@@ -1,16 +1,20 @@
 <template>
   <div class="24h">
-  <div class="card">
-    <div class="card__body">
-      <ol class="card__list">
-        <li class="card__item" v-for="(newItem) in newsItems" :key="newItem.title">
-          <a href="{{newItem.url}}">{{ newItem.title }}</a></li>
-      </ol>
-    </div>
-  </div>
+	  <div class="card">
+		  <div class="card__body">
+			  <ol class="card__list">
+				  <li
+						  class="card__item"
+						  v-for="newItem in newsItems"
+						  :key="newItem.title"
+				  >
+					  <a href="{{newItem.url}}">{{ newItem.title }}</a>
+				  </li>
+			  </ol>
+		  </div>
+	  </div>
   </div>
 </template>
-
 
 <script>
 export default {
@@ -18,35 +22,35 @@ export default {
   props: {},
   data() {
     return {
-      newsItems: null,
+	    newsItems : null,
       errorMessage: null,
-      post: null
+	    post      : null,
     };
   },
   mounted() {
-    fetch('https://public-api.aktuality.sk/articles/mostread/aktuality/?days=1&limit=8')
-        .then(async response => {
-          const data = await response.json();
-          console.log(data.items[0].title);
+	  fetch(
+		  "https://public-api.aktuality.sk/articles/mostread/aktuality/?days=1&limit=8"
+	  )
+		  .then(async (response) => {
+			  const data = await response.json();
+			  console.log(data.items[0].title);
 
-          // check for error response
-          if (!response.ok) {
-            // get error message from body or default to response statusText
-            const error = (data && data.message) || response.statusText;
-            return Promise.reject(error);
-          }
+			  // check for error response
+			  if (!response.ok) {
+				  // get error message from body or default to response statusText
+				  const error = (data && data.message) || response.statusText;
+				  return Promise.reject(error);
+			  }
 
-          return this.newsItems = data.items;
-
-        })
-        .catch(error => {
-          this.errorMessage = error;
-          console.error("There was an error!", error);
-        });
+			  return (this.newsItems = data.items);
+		  })
+		  .catch((error) => {
+			  this.errorMessage = error;
+			  console.error("There was an error!", error);
+		  });
   },
 
-
-  methods: {}
+	methods: {},
 };
 </script>
 
@@ -60,7 +64,6 @@ export default {
   &__list {
     float: left;
     text-align: left;
-
   }
 
   &__item {
@@ -68,7 +71,6 @@ export default {
     text-align: left;
     padding: 0.5em;
     letter-spacing: em(0.3);
-
   }
 
   &__item:first-child {
@@ -76,10 +78,10 @@ export default {
   }
 }
 
-ul, ol {
+ul,
+ol {
   padding: 0 em(21);
   background: $color-bg;
-
 }
 
 ol li {
