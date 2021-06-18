@@ -1,54 +1,78 @@
 <template>
-  <div class="container">
-	  <News title="Najčítanejšie"/>
-    <div id="nav">
-      <router-link to="/">24h</router-link>
-      /
-      <router-link to="/3d">3d</router-link>
-      /
-      <router-link to="/7d">7d</router-link>
+  <div class="header">
+    <div id="container">
+      <News title="Najčítanejšie" />
     </div>
-	  <router-view/>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import "~@/scss/main.scss";
-#app {
+
+.header {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   max-width: 100%;
+  background: $color-bg;
+  margin: -1em;
+  margin-bottom: -2em;
+  padding: 24px;
 }
-.container {
-  max-width: 25%; //use column width is max 25% of page width, tested 1440px
-  margin: 1em auto;
+
+#container {
+  max-width: 30%;
+  margin: 0em auto;
   font-family: PT Sans, sans-serif;
+  background: $color-bg-container;
 }
 
-#nav {
-  cursor: pointer;
-  font-size: 1.17em;
-  display: block;
-  float: right;
-  a {
-    font-weight: bold;
-    color: $color-grey;
-    text-decoration: underline;
-
-    &.router-link-exact-active {
-      color: $color-title;
-      text-decoration: none;
-    }
+/*media screen*/
+@media screen and (max-width: 1070px) {
+  #container {
+    max-width: 40%;
+  }
+}
+@media screen and (max-width: 820px) {
+  #container {
+    max-width: 50%;
+  }
+}
+@media screen and (max-width: 650px) {
+  #container {
+    max-width: 60%;
+  }
+}
+@media screen and (max-width: 522px) {
+  #container {
+    max-width: 70%;
+  }
+}
+@media screen and (max-width: 450px) {
+  #container {
+    max-width: 80%;
+  }
+}
+@media screen and (max-width: 400px) {
+  #container {
+    max-width: 90%;
+  }
+}
+@media screen and (max-width: 360px) {
+  #container {
+    max-width: 100%;
+  }
+  .header {
+    padding: 20px;
   }
 }
 </style>
 
 <script>
-	import News from "@/components/News";
+import News from "@/components/News";
 
-	export default {
-		components: {News},
-	};
+export default {
+  components: { News },
+};
 </script>
